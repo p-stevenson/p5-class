@@ -1,39 +1,39 @@
-function setup () {
-  createCanvas (400, 400);
-  frameRate(1)
+let walker;
+
+function setup() {
+  createCanvas(400, 700);
+  background(220);
+  walker = new Walker();
 }
 
-function draw () {
-  background(30);
-  star2();
-  star2();
-  star2();
-  star2();
-  star2();
-  star2();
-  star2();
+function draw() {
+  // background(80, 80, 80);
+  walker.step();
+  walker.show();
 }
 
-function star(x,y,length) {
-  noStroke()
-  fill (255)
-  triangle(x,y - length * 0.25, x - length * 0.5, y + length * 0.5, x + length * 0.5, y + length * 0.5)
-  triangle(x - length * 0.5,y, x + length * 0.5, y, x , y + length * 0.75)
+class Walker {
+  constructor() {
+    this.x = width / 2;
+    this.y = height / 2;
+  }
+  show() {
+  stroke(random(0, 255), random(0, 255), random(0, 255));
+  strokeWeight(3);
+  point(this.x, this.y);
+  }
+
+  step() {
+    const choice = floor(random(4));
+    if (choice === 0) {
+      this.x++;
+    } else if (choice === 1){
+      this.x--;
+    } else if (choice === 2) {
+      this.y++;
+    } else if (choice === 3) {
+      this.y--;
+    }
+  }
 }
 
-
-
-function star2 () {
-  noStroke();
-  let starSize = random(4, 20)
-  let centerX = random(20, 380);
-  let centerY = random(0, 150);
-  let centerYOffset = centerY - starSize * 1.45;
-  fill(random(200, 220), random(230, 240), random(240, 255));
-  triangle(centerX - starSize, centerY - starSize, 
-            centerX + starSize, centerY - starSize, 
-            centerX, centerY);
-  triangle(centerX  + starSize, centerYOffset + starSize, 
-            centerX - starSize, centerYOffset + starSize, 
-            centerX, centerYOffset);
-}
