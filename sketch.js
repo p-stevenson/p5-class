@@ -1,13 +1,12 @@
 let walker;
 
 function setup() {
-  createCanvas(400, 700);
+  createCanvas(400, 400);
   background(220);
   walker = new Walker();
 }
 
 function draw() {
-  // background(80, 80, 80);
   walker.step();
   walker.show();
 }
@@ -19,7 +18,8 @@ class Walker {
   }
   show() {
   stroke(random(0, 255), random(0, 255), random(0, 255));
-  strokeWeight(3);
+  strokeWeight(35);;
+  fill(0)
   point(this.x, this.y);
   }
 
