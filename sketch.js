@@ -4,6 +4,7 @@ function setup() {
   createCanvas(400, 400);
   background(220);
   walker = new Walker();
+  noLoop()
 }
 
 function draw() {
