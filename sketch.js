@@ -36,7 +36,7 @@ class Walker {
     let stuff = [-3, 0, 3];
     let xStep = random(stuff);
     let yStep = random(stuff);
-    textSize(20);
+    textSize(30);
 
     const r = random(1);
     if (r < 0.25) {
