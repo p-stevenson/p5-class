@@ -1,22 +1,21 @@
-let walker;
-
 function setup() {
+  // frameRate(5)
   createCanvas(400, 400);
   background(220);
   walker = new Walker();
-  walker2 = new Walker();
-  walker3 = new Walker();
-  walker4 = new Walker();
+  // walker2 = new Walker();
+  // walker3 = new Walker();
+  // walker4 = new Walker();
 }
 
 function draw() {
   walker.step();
   walker.show();
   walker.sing();
-  walker2.step();
-  walker2.show();
-  walker3.step();
-  walker3.show();
+  // walker2.step();
+  // walker2.show();
+  // walker3.step();
+  // walker3.show();
 }
 
 class Walker {
@@ -37,16 +36,21 @@ class Walker {
     let stuff = [-3, 0, 3];
     let xStep = random(stuff);
     let yStep = random(stuff);
+    textSize(20);
 
-    const r = random(1)
+    const r = random(1);
     if (r < 0.25) {
       this.x += 3
+      text("RIGHT", this.x + 50, this.y);
     } else if ( r < 0.5) {
       this.x -= 3
+      text("LEFT", this.x - 100, this.y);
     } else if ( r < 0.75) {
       this.y += 3
+      text("UP", this.x, this.y + 50);
     } else {
       this.y -= 3
+      text("DOWN", this.x, this.y - 50);
     }
     // this.x += xStep;
     // this.y += yStep;
