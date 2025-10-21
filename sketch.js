@@ -1,67 +1,41 @@
 function setup() {
-  // frameRate(5)
   createCanvas(400, 400);
-  background(220);
-  walker = new Walker();
-  // walker2 = new Walker();
-  // walker3 = new Walker();
-  // walker4 = new Walker();
+  frameRate(2)
 }
 
 function draw() {
-  walker.step();
-  walker.show();
-  walker.sing();
-  // walker2.step();
-  // walker2.show();
-  // walker3.step();
-  // walker3.show();
+  fizzBuzz()
 }
 
-class Walker {
-  constructor() {
-    this.x = width / 2;
-    this.y = height / 2;
-  }
-  show() {
-  // noStroke();
-  stroke(1);
-  fill(random(0, 255), random(0, 255), random(0, 255));
-  strokeWeight(1);
-  circle(this.x, this.y, 75);
-  }
+function fizzBuzz() {
+  stroke(0, 0, 0);
+  strokeWeight(5);
+  textAlign(CENTER);
+  textSize(80);
+  background(random(255), random(255), random(255));
 
-  //favour downRight
-  step() {
-    let stuff = [-3, 0, 3];
-    let xStep = random(stuff);
-    let yStep = random(stuff);
-    textSize(30);
+  if (frameCount % 3 === 0 && frameCount % 5 === 0) {
+    textFont('Calibri');
+    textStyle(ITALIC);
+    text('FizzBuzz', random(50, 350), random(50, 350));
 
-    const r = random(1);
-    if (r < 0.25) {
-      this.x += 3
-      text("RIGHT", this.x + 50, this.y);
-    } else if ( r < 0.5) {
-      this.x -= 3
-      text("LEFT", this.x - 100, this.y);
-    } else if ( r < 0.75) {
-      this.y += 3
-      text("UP", this.x, this.y + 50);
-    } else {
-      this.y -= 3
-      text("DOWN", this.x, this.y - 50);
-    }
-    // this.x += xStep;
-    // this.y += yStep;
   }
+  else if (frameCount % 3 === 0) {
+    textSize(80);
+    textStyle(NORMAL);
+    text('Fizz', random(50, 350), random(50, 350));
 
-  sing() {
-    const probability = 0.1;
-    const r = random(1);
-    if (r < probability) {
-      print("Sing!")
-    }
+  } else if (frameCount % 5 === 0) {
+    textFont('Verdana');
+    textSize(80);
+    text('Buzz', random(50, 350), random(50, 350));
+
+  }
+  else {
+    fill(random(255), random(255), random(255));
+    textFont('Courier New')
+    textSize(random(50, 110));
+    textStyle(BOLDITALIC)
+    text(frameCount, random(50, 350), random(50, 350));
   }
 }
-
