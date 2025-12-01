@@ -30,6 +30,7 @@ function draw() {
     fill(random(255), random(255), random(255));
     xSpeed = random(1, 4);
   }
-  filter(BLUR, 6)
-  filter(DILATE)
+  filter(POSTERIZE, 10);
+  filter(BLUR, 6);
+  filter(DILATE);
 }
