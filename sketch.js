@@ -1,8 +1,9 @@
 //defined some globally scoped variables that will be used in other parts of the program.
-let dot
+noloop();
+let blob;
 let x, y, xSpeed, ySpeed;
-//this is the array that will store the newly created balls.
-let numDots = [];
+//this is the array that will store the newly created blobs.
+let numBlobs = [];
 
 //this is a built in p5 function that runs once and only once at startup.
 function setup () {
@@ -24,16 +25,14 @@ function mousePressed() {
     let y = mouseY;
     //here we assign a random value between 40 and 100 to the size variable.
     let size = random(40, 100);
-    //TODO change name to ball.
-    //here I call my Dot class to create a new object named dot.
-    dot = new Dot(x,y, size);
-    //TODO create a new loop to push to array that doesn't rely on push.
-    numDots.push(dot);
+    //here I call my Blobr class to create a new object named blob.
+    blob = new Blobr(x,y, size);
+    numBlobs[numBlobs.length] = blob;
   } 
 }
 
-//here I define my Dot class
-class Dot {
+//here I define my Blobr class
+class Blobr {
   //this is the class constructor which is a function that stores some default values
   // for each of our objects created from this class. The constructor can also be passed
   // values when it is created.
@@ -64,7 +63,6 @@ class Dot {
   //this method is responsible for checking if the ball has reached the edge of the canvas
   // and if it has setting to a new color and changing it's direction.
   bounce() {
-
     let radius = this.size / 2;
     // the following two if statements do essentially the same thing.
     // checking if the y or x position are great equal to or less than the lowest or highest values of our canvas
@@ -85,16 +83,15 @@ class Dot {
 //this is another built in p5 function that tells the program what to draw.
 //unlike setup() it is called on every frame.
 function draw () {
-  // here we loop through our numDots array and for each ball present in that array
+  // here we loop through our numBlobs array and for each ball present in that array
   // we call the class methods defined in our class.
-  //TODO swap out this for of for a simple for loop.
-  for (let dot of numDots) {
-    //draw the ball
-    dot.body();
+  for (let i = 0;  i < numBlobs.length; i++) {
+    //draw the blob
+    numBlobs[i].body();
     // check for bounce and reverse direction if true
-    dot.bounce();
-    // move the ball
-    dot.move();
+    numBlobs[i].bounce();
+    // move the blob
+    numBlobs[i].move();
   }
   //here I've applied some of p5's built in filters.
   // posterize gives the colours a gradient effect
