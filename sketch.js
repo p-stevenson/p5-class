@@ -1,5 +1,5 @@
 //defined some globally scoped variables that will be used in other parts of the program.
-noloop();
+// noloop();
 let blob;
 let x, y, xSpeed, ySpeed;
 //this is the array that will store the newly created blobs.
