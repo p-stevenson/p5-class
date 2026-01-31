@@ -100,5 +100,11 @@ function draw () {
   filter(DILATE);
   // blur is the final pass that will blur those colours accross the screen.
   filter(BLUR, 20);
+  // adds a text counter to the bottom right corner
+  // updates each time a new Blob is added.
+  for (let i = 0; i < numBlobs.length; i++) {
+    textSize(50);
+    text(numBlobs.length, 500, 550, 80, 80);
+  }
 }
 
